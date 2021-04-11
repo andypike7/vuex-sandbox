@@ -33,19 +33,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
+import { actionIncreaseCounter } from '@/store/actions';
 
 @Component
-export default class HelloWorld extends Vue {
-  @Prop(String)
-  count: number = 0;
-
-  increment() {
-    this.count++;
+export default class App extends Vue {
+  async increment() {
+    await actionIncreaseCounter(this.$store.state);
   }
-  // incrementTruth() {
-  //   this.$root.$data.thuth += '?';
-  // }
 }
 </script>
 
